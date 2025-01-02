@@ -1,1 +1,1 @@
-from .check_in_model import ImageRequest
+from .check_in_model import ImageRequest , ImageResponse

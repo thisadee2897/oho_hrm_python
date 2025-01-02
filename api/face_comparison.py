@@ -3,6 +3,7 @@ from models import ImageRequest
 from services import compare_face_service
 
 router = APIRouter()
+@router.post("/face/")
 async def compare_face(request: ImageRequest):
     try:
         result = await compare_face_service(request)

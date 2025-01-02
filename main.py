@@ -9,4 +9,5 @@ async def root():
 
 @app.post("/compare-face/")
 async def compare_face_endpoint(request: ImageRequest):
+    print(request.profile_image)
     return await compare_face(request)

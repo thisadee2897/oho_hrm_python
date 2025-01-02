@@ -1,0 +1,1 @@
+from .face_comparison_service import compare_face_service

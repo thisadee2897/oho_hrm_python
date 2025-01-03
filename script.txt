@@ -1,3 +1,14 @@
-source venv/bin/activate 
+
+.\venv\Scripts\activate               # windows
+source venv/bin/activate                # macOS
+
 pip freeze > requirements.txt
-uvicorn mian:app --reload
+pip install  requirements.txt
+uvicorn main:app --reload
+
+
+server run Scripts
+cd C:\path\to\myproject
+.\venv\Scripts\activate
+uvicorn main:app --host 0.0.0.0 --port 9898
+deactivate

@@ -1,12 +1,12 @@
-from fastapi import APIRouter, HTTPException, status
+from fastapi import APIRouter, HTTPException, UploadFile, status
 from models import ImageRequest
 from services import compare_face_service
 
 router = APIRouter()
 @router.post("/face/")
-async def compare_face(request: ImageRequest):
+async def compare_face(request: ImageRequest, file: UploadFile):
     try:
-        result = await compare_face_service(request)
+        result = await compare_face_service(request, file)
         return result
     except HTTPException as e:
         raise e

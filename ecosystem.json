@@ -1,0 +1,9 @@
+{
+    "apps": [
+      {
+        "name": "oho_hrm",
+        "script": "oho_hrm.py",
+        "interpreter": "python3"
+      }
+    ]
+  }

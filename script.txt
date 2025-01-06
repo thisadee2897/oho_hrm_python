@@ -3,12 +3,15 @@
 source venv/bin/activate                # macOS
 
 pip freeze > requirements.txt
-pip install  requirements.txt
-uvicorn main:app --reload
+pip install  -r requirements.txt
+uvicorn oho_hrm:app --reload
 
 
 server run Scripts
 cd C:\path\to\myproject
 .\venv\Scripts\activate
-uvicorn main:app --host 0.0.0.0 --port 9898
+uvicorn oho_hrm:app --host localhost --port 9898
 deactivate
+
+uvicorn main:app --reload
+pm2 start oho_hrm.py --interpreter F:\OHO_HRM\oho_hrm_python\venv\Scripts\python.exe

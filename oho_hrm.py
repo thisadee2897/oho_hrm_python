@@ -3,6 +3,7 @@ from fastapi import FastAPI, File, Form,Request,HTTPException, UploadFile ,statu
 import face_recognition as face
 import numpy as np
 import os
+import uvicorn
 from models.check_in_model import ImageResponse
 app = FastAPI()
 
@@ -36,7 +37,6 @@ async def load_profile_image(profile_image_path: str):
     
     except Exception:
         raise HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail="เกิดข้อผิดพลาดในการโหลดภาพจากเซิร์ฟเวอร์")
-
 async def compare_face_service(profile: str, img_data: bytes):
     try:
         img_file = BytesIO(img_data)
@@ -65,3 +65,12 @@ async def compare_face_service(profile: str, img_data: bytes):
 
     except HTTPException as http_exc:
         raise http_exc
+
+
+if __name__ == "__main__":
+    uvicorn.run("oho_hrm:app", host="localhost", port=9898,
+        log_level="info",
+        limit_concurrency=100,
+        limit_max_requests=1000,
+        limit_max_request_size=50 * 1024 * 1024
+        )

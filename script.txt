@@ -1,3 +1,8 @@
 source venv/bin/activate 
 pip freeze > requirements.txt
 uvicorn mian:app --reload
+.\venv\Scripts\activate
+uvicorn oho_hrm:app --host localhost --port 9899
+
+
+pm2 start "uvicorn oho_hrm:app --host localhost --port 9899" --name oho_hrm
